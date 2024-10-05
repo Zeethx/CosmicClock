@@ -4,23 +4,10 @@ import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars, Text } from '@react-three/drei';
 import * as THREE from 'three';
-
-// Define the type for Planet data
-type PlanetData = {
-	name: string;
-	semiMajorAxis: number;
-	eccentricity: number;
-	inclination: number;
-	meanLongitude: number;
-	longitudeOfPerihelion: number;
-	longitudeOfAscendingNode: number;
-	meanMotion: number;
-	color: string;
-	radius: number;
-};
-
+import { PlanetData } from '../utils/type';
 // Scale factor to adjust the distances from the Sun to fit the screen.
-const distanceScale = 150; // Scaling for display purposes
+import Planets from './Planets';
+import Sun from './Sun';
 
 // Planetary data with Keplerian elements from the provided table
 const planetsData: PlanetData[] = [
@@ -122,101 +109,7 @@ const planetsData: PlanetData[] = [
 	}
 ];
 
-// Helper function to solve Kepler's equation and get eccentric anomaly
-const solveKepler = (M: number, e: number): number => {
-	let E = M; // Initial guess for eccentric anomaly
-	for (let i = 0; i < 5; i++) {
-		E = M + e * Math.sin(E); // Iteratively solve Kepler's equation
-	}
-	return E;
-};
 
-// Function to calculate planet position using Keplerian elements
-const calculatePosition = (planet: PlanetData, time: number) => {
-	const {
-		semiMajorAxis: a,
-		eccentricity: e,
-		inclination: I,
-		meanLongitude: L,
-		longitudeOfPerihelion: w,
-		longitudeOfAscendingNode: omega,
-		meanMotion
-	} = planet;
-
-	// Step 1: Compute the mean anomaly (M)
-	const M = THREE.MathUtils.degToRad((L - w) + time * meanMotion); // Adjusting time for degrees per day
-
-	// Step 2: Solve Kepler's equation to get the eccentric anomaly (E)
-	const E = solveKepler(M, e);
-
-	// Step 3: Calculate true anomaly (v) and heliocentric distance (r)
-	const v = 2 * Math.atan2(
-		Math.sqrt(1 + e) * Math.sin(E / 2),
-		Math.sqrt(1 - e) * Math.cos(E / 2)
-	);
-	const r = a * (1 - e * Math.cos(E));
-
-	// Step 4: Calculate position in 2D
-	const x_prime = r * Math.cos(v);
-	const y_prime = r * Math.sin(v);
-
-	// Step 5: Convert to 3D using inclination and node
-	const cosOmega = Math.cos(THREE.MathUtils.degToRad(omega));
-	const sinOmega = Math.sin(THREE.MathUtils.degToRad(omega));
-	const cosI = Math.cos(THREE.MathUtils.degToRad(I));
-	const sinI = Math.sin(THREE.MathUtils.degToRad(I));
-
-	const x = cosOmega * x_prime - sinOmega * cosI * y_prime;
-	const y = sinOmega * x_prime + cosOmega * cosI * y_prime;
-	const z = sinI * y_prime;
-
-	return { x, y, z };
-};
-
-// Planet component rendering a mesh for each planet with labels and glowing effect
-const Planet = ({ planet }: { planet: PlanetData }) => {
-	const ref = useRef<THREE.Mesh>(null);
-
-	useFrame(({ clock }) => {
-		const time = clock.getElapsedTime() * 10; // Increase speed (factor of 50)
-		const { x, y, z } = calculatePosition(planet, time);
-		if (ref.current) {
-			ref.current.position.set(x * distanceScale, y * distanceScale, z * distanceScale); // Apply distance scaling
-		}
-	});
-
-	return (
-		<>
-			<mesh ref={ref}>
-				<sphereGeometry args={[planet.radius, 32, 32]} />
-				<meshStandardMaterial color={planet.color} emissive={planet.color} emissiveIntensity={0.5} />
-			</mesh>
-			{ref.current && (
-				<Text
-					position={[ref.current.position.x, ref.current.position.y + planet.radius * 2, ref.current.position.z]} // Position above the planet
-					fontSize={2}
-					color="white"
-					anchorX="center"
-					anchorY="middle"
-				>
-					{planet.name}
-				</Text>
-			)}
-		</>
-	);
-};
-
-// Sun component with glowing effect
-const Sun = () => {
-	const sunRadius = 10;
-
-	return (
-		<mesh position={[0, 0, 0]}>
-			<sphereGeometry args={[sunRadius, 64, 64]} />
-			<meshStandardMaterial emissive={'yellow'} emissiveIntensity={10} />
-		</mesh>
-	);
-};
 
 // Solar system scene with Canvas and lighting
 const SolarSystem = () => {
@@ -235,7 +128,7 @@ const SolarSystem = () => {
 			<OrbitControls enablePan={true} enableZoom={true} enableRotate={true} /> {/* Enable free movement */}
 			<Sun /> {/* Render the Sun at the center */}
 			{planetsData.map((planet) => (
-				<Planet key={planet.name} planet={planet} />
+				<Planets key={planet.name} planet={planet} />
 			))}
 		</Canvas>
 	);
