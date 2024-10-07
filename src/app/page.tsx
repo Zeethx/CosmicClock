@@ -1,101 +1,173 @@
-import Image from "next/image";
+import React from "react";
+import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+const Home = () => {
+    return (
+        <div className="h-screen">
+            <BackgroundBeamsWithCollision>
+                <div className="flex flex-col p-6 text-white text-center">
+                    <h1 className="text-2xl font-bold animate-fadeIn">
+                        <svg
+                            width="720"
+                            height="126"
+                            viewBox="-4 0 374.319018404908 64.59370336755148"
+                        >
+                            <defs id="SvgjsDefs2422">
+                                <linearGradient id="SvgjsLinearGradient2427">
+                                    <stop
+                                        id="SvgjsStop2428"
+                                        stop-color="#ef4136"
+                                        offset="0"
+                                    ></stop>
+                                    <stop
+                                        id="SvgjsStop2429"
+                                        stop-color="#fbb040"
+                                        offset="1"
+                                    ></stop>
+                                </linearGradient>
+                            </defs>
+                            <g
+                                id="SvgjsG2423"
+                                transform="matrix(0.7214894047099868,0,0,0.7214894047099868,-12.629013307854079,2.749077717705937)"
+                                fill="url(#SvgjsLinearGradient2427)"
+                            >
+                                <path
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    d="M85.021,39.668c0-3.311-2.693-6.002-6.002-6.002c-3.311,0-6.004,2.691-6.004,6.002s2.693,6.004,6.004,6.004  C82.327,45.672,85.021,42.979,85.021,39.668z M76.163,39.668c0-1.574,1.281-2.854,2.855-2.854c1.572,0,2.854,1.279,2.854,2.854  s-1.281,2.855-2.854,2.855C77.444,42.523,76.163,41.242,76.163,39.668z"
+                                ></path>
+                                <path
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    d="M45.181,25.115c-13.283,0-24.09,10.807-24.09,24.09c0,2.602,0.436,5.143,1.247,7.584c-3.829,1.318-6.591,4.947-6.591,9.217  c0,5.379,4.376,9.754,9.756,9.754c3.719,0,6.955-2.094,8.6-5.164c3.41,1.768,7.203,2.699,11.078,2.699  c13.283,0,24.09-10.807,24.09-24.09S58.464,25.115,45.181,25.115z M60.987,35.289c2.375,2.695,4.09,5.986,4.845,9.633  c-2.618-1.605-4.443-4.328-4.822-7.449C60.921,36.742,60.919,36.012,60.987,35.289z M34.386,31.121  c0.057,0.449,0.111,0.896,0.208,1.379c0.226,1.242,0.654,2.402,1.069,3.525c0.85,2.301,1.584,4.289,0.512,6.533  c-1.323,2.777-3.25,2.947-6.591,2.279l-0.499-0.088c-1.139-0.197-2.727-0.475-4.277-0.904  C26.226,38.459,29.718,33.918,34.386,31.121z M24.391,45.809c1.604,0.436,3.199,0.713,4.354,0.912l0.47,0.082  c0.998,0.199,2.033,0.367,3.05,0.367c2.2,0,4.306-0.789,5.716-3.75c1.438-3.006,0.482-5.59-0.441-8.088  c-0.402-1.09-0.782-2.119-0.98-3.207c-0.143-0.717-0.221-1.381-0.268-2.018c2.11-0.986,4.398-1.65,6.816-1.887  c-0.524,2.514-0.068,5.33,1.383,8.66c2.457,5.791,4.344,11.369,0.479,15.977c-3.278,4.018-8.233,2.842-13.481,1.598  c-2.135-0.508-4.342-1.031-6.363-1.133c-0.211-0.01-0.418-0.008-0.625-0.01c-0.266-1.346-0.408-2.717-0.408-4.107  C24.091,48.045,24.21,46.916,24.391,45.809z M25.503,72.611c-3.644,0-6.607-2.963-6.607-6.605s2.964-6.605,6.607-6.605  c3.641,0,6.604,2.963,6.604,6.605S29.144,72.611,25.503,72.611z M45.181,70.295c-3.543,0-7.004-0.893-10.086-2.574  c0.099-0.559,0.16-1.129,0.16-1.715c0-1.129-0.203-2.209-0.558-3.219c1.019,0.127,2.04,0.34,3.079,0.656  c2.049,0.646,3.76,1.602,5.57,2.611c0.883,0.492,1.797,1.002,2.773,1.49c1.567,0.807,3.22,1.43,4.932,1.9  C49.186,69.988,47.22,70.295,45.181,70.295z M54.452,68.119c-2.623-0.398-5.12-1.172-7.428-2.357  c-0.946-0.475-1.84-0.973-2.703-1.453c-1.902-1.063-3.699-2.064-5.952-2.775c-1.595-0.486-3.144-0.764-4.706-0.852  c-1.744-2.662-4.748-4.43-8.16-4.43c-0.061,0-0.119,0.008-0.18,0.01c-0.111-0.313-0.223-0.625-0.319-0.941  c0.009,0.002,0.017,0,0.024,0c1.834,0.092,3.856,0.572,5.998,1.08c2.493,0.592,5.141,1.219,7.668,1.219  c2.902,0,5.646-0.826,7.815-3.486c4.579-5.461,2.422-11.902-0.184-18.043c-1.401-3.215-1.756-5.742-1.12-7.975  c3.27,0.004,6.355,0.777,9.119,2.115c-0.932,2.123-1.426,4.434-1.426,6.77c0,7.822,5.469,14.615,12.951,16.391  C64.539,59.877,60.233,65.273,54.452,68.119z M54.899,37c0-2.004,0.412-3.982,1.189-5.811c1.128,0.686,2.186,1.471,3.162,2.35  c-0.313,1.367-0.396,2.77-0.227,4.174c0.518,4.266,3.277,7.936,7.154,9.664c0.052,0.604,0.092,1.211,0.092,1.828  c0,0.74-0.04,1.473-0.115,2.195C59.644,49.777,54.899,43.838,54.899,37z"
+                                ></path>
+                                <path
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    d="M52.218,56.822c0,2.127,1.731,3.859,3.859,3.859c2.129,0,3.859-1.732,3.859-3.859c0-2.129-1.73-3.859-3.859-3.859  C53.949,52.963,52.218,54.693,52.218,56.822z M57.937,56.822c0,1.025-0.834,1.859-1.859,1.859s-1.859-0.834-1.859-1.859  s0.834-1.859,1.859-1.859S57.937,55.797,57.937,56.822z"
+                                ></path>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="71.673"
+                                    cy="26.807"
+                                    r="1.342"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="15.747"
+                                    cy="55.678"
+                                    r="1.342"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="70.329"
+                                    cy="79.91"
+                                    r="1.342"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="20.835"
+                                    cy="18.91"
+                                    r="1.342"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="85.021"
+                                    cy="62.025"
+                                    r="1.342"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="30.433"
+                                    cy="17.01"
+                                    r="0.558"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="13.634"
+                                    cy="45.672"
+                                    r="0.558"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="13.076"
+                                    cy="30.41"
+                                    r="0.559"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="47.039"
+                                    cy="18.91"
+                                    r="0.558"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="66.897"
+                                    cy="14.766"
+                                    r="0.558"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="85.02"
+                                    cy="27.529"
+                                    r="0.558"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="71.672"
+                                    cy="65.525"
+                                    r="0.558"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="82.746"
+                                    cy="75.203"
+                                    r="0.558"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="79.018"
+                                    cy="55.678"
+                                    r="0.559"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="52.776"
+                                    cy="79.125"
+                                    r="0.558"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="22.177"
+                                    cy="85.16"
+                                    r="0.558"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="36.589"
+                                    cy="78.568"
+                                    r="0.558"
+                                ></circle>
+                                <circle
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    cx="12.518"
+                                    cy="78.01"
+                                    r="0.558"
+                                ></circle>
+                            </g>
+                            <g
+                                id="SvgjsG2424"
+                                transform="matrix(1.5172504545551821,0,0,1.5172504545551821,74.00000144696278,21.867538807972224)"
+                                fill="#eeeeee"
+                            >
+                                <path d="M15.3 5.98 l0 4.7 l-8.6 0 c-1.18 0.1 -2.08 1.12 -2.08 2.32 s0.9 2.18 2.08 2.32 l5.48 0 l0 1.56 l-5.48 0 c-2.02 -0.16 -3.62 -1.82 -3.62 -3.9 c0 -2 1.54 -3.7 3.54 -3.86 l7.12 0 l0 -1.58 l-7.04 0 l0 0.02 c-2.86 0.16 -5.14 2.52 -5.14 5.44 c0 2.9 2.28 5.28 5.14 5.44 l7.04 0 l0 -3.12 l1.56 0 l0 4.68 l-8.6 0 c-3.74 -0.16 -6.7 -3.24 -6.7 -7 c0 -3.78 2.96 -6.84 6.7 -7 z M24.48 5.359999999999999 c4.2 0 7.62 3.42 7.62 7.64 s-3.42 7.62 -7.62 7.62 c-4.22 0 -7.64 -3.4 -7.64 -7.62 s3.42 -7.64 7.64 -7.64 z M24.48 19.08 c3.36 0 6.08 -2.72 6.08 -6.08 s-2.72 -6.1 -6.08 -6.1 c-3.38 0 -6.1 2.74 -6.1 6.1 s2.72 6.08 6.1 6.08 z M24.48 8.44 c2.5 0 4.54 2.06 4.54 4.56 s-2.04 4.54 -4.54 4.54 s-4.56 -2.04 -4.56 -4.54 s2.06 -4.56 4.56 -4.56 z M24.48 16 c1.66 0 3 -1.34 3 -3 c0 -1.68 -1.34 -3.02 -3 -3.02 c-1.68 0 -3.02 1.34 -3.02 3.02 c0 1.66 1.34 3 3.02 3 z M46.64 13.780000000000001 c-7.94 0 -8.06 -0.02 -8.16 -0.02 l-0.04 0 c-2 -0.16 -3.54 -1.86 -3.54 -3.88 c0 -2.16 1.74 -3.9 3.9 -3.9 l8.4 0 c1.68 0 3.04 1.36 3.04 3.06 l0 1.62 l-11.38 0 l-0.02 0 l-0.02 0 c-0.46 -0.02 -0.76 -0.36 -0.76 -0.78 s0.32 -0.76 0.74 -0.78 l9.88 0 l0 -0.04 c0 -0.86 -0.66 -1.52 -1.52 -1.52 l-8.36 0 c-1.28 0 -2.34 1.04 -2.34 2.34 c0 1.2 0.9 2.16 2.04 2.32 c7.98 0 8.06 0.02 8.2 0.02 c2 0.16 3.54 1.88 3.54 3.88 c0 2.16 -1.74 3.9 -3.88 3.9 l-8.42 0 c-1.68 0 -3.04 -1.36 -3.04 -3.04 l0 -1.64 l11.46 0 c0.98 0.06 0.98 1.5 0 1.56 l-9.9 0 l0 0.04 c0 0.86 0.66 1.52 1.52 1.52 l8.38 0 c1.26 0 2.34 -1 2.34 -2.34 c0 -1.2 -0.9 -2.16 -2.06 -2.32 z M62.48 13.92 l4.48 -7.94 l4.96 0 l0 14.02 l-4.68 0 l0 -5.24 l-2.98 5.24 l-3.58 0 l-4.54 -7.96 l0 -2.94 l5.46 9.34 l1.76 0 l5.44 -9.34 l0 9.34 l1.56 0 l0 -10.9 l-2.5 0 l-5.42 9.36 l-5.34 -9.36 l-2.5 0 l0 10.9 l1.54 0 l0 -2.94 l1.56 2.68 l0 1.82 l-4.66 0 l0 -14.02 l4.96 0 z M79.4 20 l-4.68 0 l0 -14.02 l4.68 0 l0 10.9 l-1.56 0 l0 -9.34 l-1.56 0 l0 10.9 l3.12 0 l0 1.56 z M97.5 5.98 l0 4.7 l-8.6 0 c-1.18 0.1 -2.08 1.12 -2.08 2.32 s0.9 2.18 2.08 2.32 l5.48 0 l0 1.56 l-5.48 0 c-2.02 -0.16 -3.62 -1.82 -3.62 -3.9 c0 -2 1.54 -3.7 3.54 -3.86 l7.12 0 l0 -1.58 l-7.04 0 l0 0.02 c-2.86 0.16 -5.14 2.52 -5.14 5.44 c0 2.9 2.28 5.28 5.14 5.44 l7.04 0 l0 -3.12 l1.56 0 l0 4.68 l-8.6 0 c-3.74 -0.16 -6.7 -3.24 -6.7 -7 c0 -3.78 2.96 -6.84 6.7 -7 z M125.60000000000001 5.98 l0 4.7 l-8.6 0 c-1.18 0.1 -2.08 1.12 -2.08 2.32 s0.9 2.18 2.08 2.32 l5.48 0 l0 1.56 l-5.48 0 c-2.02 -0.16 -3.62 -1.82 -3.62 -3.9 c0 -2 1.54 -3.7 3.54 -3.86 l7.12 0 l0 -1.58 l-7.04 0 l0 0.02 c-2.86 0.16 -5.14 2.52 -5.14 5.44 c0 2.9 2.28 5.28 5.14 5.44 l7.04 0 l0 -3.12 l1.56 0 l0 4.68 l-8.6 0 c-3.74 -0.16 -6.7 -3.24 -6.7 -7 c0 -3.78 2.96 -6.84 6.7 -7 z M129.96 7.539999999999999 l0 7.78 l13.82 0 l0 4.68 l-15.38 0 l0 -1.56 l13.84 0 l0 -1.56 l-13.84 0 l0 -10.9 l4.68 0 l0 7.8 l-1.56 0 l0 -6.24 l-1.56 0 z M152.76 5.359999999999999 c4.2 0 7.62 3.42 7.62 7.64 s-3.42 7.62 -7.62 7.62 c-4.22 0 -7.64 -3.4 -7.64 -7.62 s3.42 -7.64 7.64 -7.64 z M152.76 19.08 c3.36 0 6.08 -2.72 6.08 -6.08 s-2.72 -6.1 -6.08 -6.1 c-3.38 0 -6.1 2.74 -6.1 6.1 s2.72 6.08 6.1 6.08 z M152.76 8.44 c2.5 0 4.54 2.06 4.54 4.56 s-2.04 4.54 -4.54 4.54 s-4.56 -2.04 -4.56 -4.54 s2.06 -4.56 4.56 -4.56 z M152.76 16 c1.66 0 3 -1.34 3 -3 c0 -1.68 -1.34 -3.02 -3 -3.02 c-1.68 0 -3.02 1.34 -3.02 3.02 c0 1.66 1.34 3 3.02 3 z M177.24 5.98 l0 4.7 l-8.6 0 c-1.18 0.1 -2.08 1.12 -2.08 2.32 s0.9 2.18 2.08 2.32 l5.48 0 l0 1.56 l-5.48 0 c-2.02 -0.16 -3.62 -1.82 -3.62 -3.9 c0 -2 1.54 -3.7 3.54 -3.86 l7.12 0 l0 -1.58 l-7.04 0 l0 0.02 c-2.86 0.16 -5.14 2.52 -5.14 5.44 c0 2.9 2.28 5.28 5.14 5.44 l7.04 0 l0 -3.12 l1.56 0 l0 4.68 l-8.6 0 c-3.74 -0.16 -6.7 -3.24 -6.7 -7 c0 -3.78 2.96 -6.84 6.7 -7 z M187.73999999999998 15.16 l1.14 -1.06 l6.42 5.9 l-6.9 0 l-5.24 -4.8 l8.12 -7.66 l-2.26 0 l-5.86 5.66 l0 -5.66 l-1.56 0 l0 10.9 l2.76 0 l1.72 1.56 l-6.04 0 l0 -14.02 l4.68 0 l0 3.44 l3.68 -3.44 l6.82 0 l-9.78 9.2 l3.56 3.26 l2.3 0 z"></path>
+                            </g>
+                        </svg>
+                    </h1>
+                    <p className="text-gray-300 text-lg font-semibold p-2 ml-[7rem] animate-fadeIn">
+                        Explore the cosmos, one spin at a time.
+                    </p>
+                </div>
+            </BackgroundBeamsWithCollision>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
-}
+    );
+};
+
+export default Home;
